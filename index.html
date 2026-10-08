@@ -14,8 +14,50 @@
 <div class="box sim"><h3>🔺 Prism</h3><div class="control"><input id="ps" type="range" min="10" max="80" value="40"><span class="val" id="piv">40°</span></div><canvas id="pc" width="900" height="300"></canvas><div class="stats"><div class="stat"><small>Incidence</small><b id="pi">40°</b></div><div class="stat"><small>Demo deviation</small><b id="pd">20°</b></div><div class="stat"><small>Observation</small><b>Deviation</b></div></div></div>
 <div class="box sim"><h3>💎 Total Internal Reflection</h3><div class="control"><input id="ts" type="range" min="10" max="80" value="35"><span class="val" id="tiv">35°</span></div><canvas id="tc" width="900" height="300"></canvas><div class="stats"><div class="stat"><small>Critical angle</small><b>≈42°</b></div><div class="stat"><small>Angle</small><b id="tia">35°</b></div><div class="stat"><small>Result</small><b id="tir">Refraction</b></div></div></div></div></section>
 <section class="sec" id="numericals"><h2>🧮 Numerical Solver</h2><p class="sub">Choose a formula, enter values and get calculation steps.</p><div class="box"><div class="fields"><div class="field full"><label>Numerical type</label><select id="stype"></select></div><div class="field"><label id="l1">Value 1</label><input id="i1" type="number" step="any"></div><div class="field"><label id="l2">Value 2</label><input id="i2" type="number" step="any"></div><div class="field" id="g3"><label id="l3">Value 3</label><input id="i3" type="number" step="any"></div></div><button class="solve" onclick="solve()">Solve Numerical</button><div class="solution" id="solution"><b>Step-by-Step Solution</b><div class="steps" id="steps"></div><div class="answer" id="answer"></div></div></div></section>
-<section class="sec"><h2>📐 Formula Bank</h2><p class="sub">Quick revision.</p><div class="fg" id="formulaBank"></div></section>
-<section class="sec" id="practice"><h2>📝 Practice + Viva</h2><p class="sub">Quick MCQs and viva.</p><div class="quiz" id="quiz"></div><button class="solve" onclick="checkQuiz()">Check MCQs</button><div class="score" id="score"></div><h3 style="margin-top:32px">🎤 Viva</h3><div class="viva" id="viva"></div></section>
+<section class="sec"><h2>📐 Formula Bank</h2><p class="sub">Quick revision of important Class 12 Physics formulas.</p><div class="fg" id="formulaBank">
+<div class="formula">Coulomb: F=(1/4πɛ₀)q₁q₂/r²</div>
+<div class="formula">Electric field: E=(1/4πɛ₀)q/r²</div>
+<div class="formula">Potential: V=(1/4πɛ₀)q/r</div>
+<div class="formula">Capacitance: C=Q/V</div>
+<div class="formula">Ohm's law: V=IR</div>
+<div class="formula">Resistance: R=ρL/A</div>
+<div class="formula">Power: P=VI=I²R=V²/R</div>
+<div class="formula">Magnetic force: F=qvB sinθ</div>
+<div class="formula">Induction: ɛ=-dΦ/dt</div>
+<div class="formula">AC reactance: Xₗ=ωL, X꜀=1/(ωC)</div>
+<div class="formula">Mirror: 1/f=1/v+1/u</div>
+<div class="formula">Mirror magnification: m=-v/u</div>
+<div class="formula">Lens: 1/f=1/v-1/u</div>
+<div class="formula">Lens magnification: m=v/u</div>
+<div class="formula">Lens power: P=1/f (f in metre)</div>
+<div class="formula">Snell: μ₁ sin i=μ₂ sin r</div>
+<div class="formula">Critical angle: sin C=1/μ</div>
+<div class="formula">YDSE: β=λD/d</div>
+<div class="formula">Photon: E=hν</div>
+<div class="formula">de Broglie: λ=h/p</div>
+<div class="formula">Radioactivity: T½=0.693/λ</div>
+<div class="formula">Transistor: I_E=I_C+I_B</div>
+</div></section>
+<section class="sec" id="practice">
+<h2>📝 Practice + Viva</h2><p class="sub">Quick MCQs and viva.</p>
+<div class="quiz" id="quiz">
+<div class="q"><b>1. SI unit of electric field?</b><label><input type="radio" name="q0" value="J/C"> J/C</label><label><input type="radio" name="q0" value="N/C"> N/C</label></div>
+<div class="q"><b>2. Ohm's law is:</b><label><input type="radio" name="q1" value="V=IR"> V=IR</label><label><input type="radio" name="q1" value="P=VI"> P=VI</label></div>
+<div class="q"><b>3. Force on a charge moving parallel to B is:</b><label><input type="radio" name="q2" value="Maximum"> Maximum</label><label><input type="radio" name="q2" value="Zero"> Zero</label></div>
+<div class="q"><b>4. YDSE fringe width is:</b><label><input type="radio" name="q3" value="β=λD/d"> β=λD/d</label><label><input type="radio" name="q3" value="β=d/λD"> β=d/λD</label></div>
+<div class="q"><b>5. Half-life is:</b><label><input type="radio" name="q4" value="0.693/λ"> 0.693/λ</label><label><input type="radio" name="q4" value="λ/0.693"> λ/0.693</label></div>
+<div class="q"><b>6. A transistor relation is:</b><label><input type="radio" name="q5" value="IE=IC+IB"> I<sub>E</sub>=I<sub>C</sub>+I<sub>B</sub></label><label><input type="radio" name="q5" value="IE=IC-IB"> I<sub>E</sub>=I<sub>C</sub>-I<sub>B</sub></label></div>
+</div>
+<button class="solve" onclick="checkQuiz()">Check MCQs</button>
+<div class="score" id="score"></div>
+<h3 style="margin-top:32px">🎤 Viva</h3>
+<div class="viva" id="viva">
+<div class="v"><b>1. What is electric flux?</b><div class="ans">It measures the electric field passing through a surface.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
+<div class="v"><b>2. What is the SI unit of capacitance?</b><div class="ans">Farad (F).</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
+<div class="v"><b>3. What is electromagnetic induction?</b><div class="ans">The production of induced emf due to a change in magnetic flux linked with a circuit.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
+<div class="v"><b>4. What is critical angle?</b><div class="ans">The angle of incidence in the denser medium for which the refracted angle is 90°.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
+<div class="v"><b>5. What is threshold frequency?</b><div class="ans">The minimum frequency needed for photoelectric emission.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
+</div></section>
 <footer>Physics 12 Lab • Class 12 Physics<br><br>Created & Designed by <strong>Ayesha Hashmi</strong></footer>
 <script>
 var chapters=[
@@ -45,43 +87,8 @@ function tirDraw(){var x=cx("tc"),a=+ts.value,r=a*Math.PI/180;tiv.textContent=a+
 
 var types={"Coulomb's law":[["q₁ (C)","q₂ (C)","r (m)"],3,function(v){var F=8.99e9*Math.abs(v[0]*v[1])/(v[2]*v[2]);return["F=9×10⁹×|q₁q₂|/r²\nF=9×10⁹×|"+v[0]+"×"+v[1]+"|/"+v[2]+"²\nF="+F,"Force = "+F.toExponential(4)+" N"]}],"Ohm's law":[["V (V)","R (Ω)"],2,function(v){var I=v[0]/v[1];return["I=V/R\nI="+v[0]+"/"+v[1]+"\nI="+I,"Current = "+I+" A"]}],"Lens formula":[["f (cm)","u (cm)"],2,function(v){var q=1/(1/v[0]+1/v[1]);return["1/f=1/v−1/u\n1/v=1/f+1/u\nv="+q,"Image distance = "+q.toFixed(4)+" cm"]}],"Mirror formula":[["f (cm)","u (cm)"],2,function(v){var q=1/(1/v[0]-1/v[1]);return["1/f=1/v+1/u\n1/v=1/f−1/u\nv="+q,"Image distance = "+q.toFixed(4)+" cm"]}],"Lens magnification":[["u (cm)","v (cm)"],2,function(v){var m=v[1]/v[0];return["m=v/u\nm="+v[1]+"/"+v[0]+"\nm="+m,"Magnification = "+m.toFixed(4)]}],"Mirror magnification":[["u (cm)","v (cm)"],2,function(v){var m=-v[1]/v[0];return["m=−v/u\nm=−("+v[1]+"/"+v[0]+")\nm="+m,"Magnification = "+m.toFixed(4)]}],"Power of lens":[["f (m)"],1,function(v){var p=1/v[0];return["P=1/f\nP=1/"+v[0]+"\nP="+p,"Power = "+p.toFixed(4)+" D"]}],"Magnetic force":[["q (C)","v (m/s)","B (T)"],3,function(v){var F=v[0]*v[1]*v[2];return["F=qvB (90°)\nF="+v[0]+"×"+v[1]+"×"+v[2]+"\nF="+F,"Force = "+F+" N"]}],"Photon energy":[["h (J·s)","ν (Hz)"],2,function(v){var E=v[0]*v[1];return["E=hν\nE="+v[0]+"×"+v[1]+"\nE="+E,"Energy = "+E.toExponential(4)+" J"]}],"Half-life":[["λ (s⁻¹)"],1,function(v){var T=.693/v[0];return["T½=0.693/λ\nT½=0.693/"+v[0]+"\nT½="+T,"Half-life = "+T.toFixed(4)+" s"]}],"Transistor β":[["I_C (A)","I_B (A)"],2,function(v){var b=v[0]/v[1];return["β=I_C/I_B\nβ="+v[0]+"/"+v[1]+"\nβ="+b,"Current gain β = "+b.toFixed(4)]}]};
 var st=document.getElementById("stype");Object.keys(types).forEach(function(k){st.add(new Option(k,k))});function ui(){var t=types[st.value];for(var n=1;n<=3;n++)document.getElementById("g"+n).style.display=n<=t[1]?"flex":"none";t[0].forEach(function(z,j){document.getElementById("l"+(j+1)).textContent=z})}st.addEventListener("change",ui);ui();function solve(){var t=types[st.value],v=[];for(var n=1;n<=t[1];n++){var z=parseFloat(document.getElementById("i"+n).value);if(!Number.isFinite(z)){solution.style.display="block";steps.textContent="Please enter all required values.";answer.textContent="";return}v.push(z)}var o=t[2](v);solution.style.display="block";steps.textContent=o[0];answer.textContent=o[1]}
-var formulaBank=document.getElementById("formulaBank");
-var formulaList=[
-"Coulomb: F=(1/4πɛ₀)q₁q₂/r²",
-"Electric field: E=(1/4πɛ₀)q/r²",
-"Potential: V=(1/4πɛ₀)q/r",
-"Capacitance: C=Q/V",
-"Parallel plate capacitor: C=ɛ₀A/d",
-"Capacitor energy: U=½CV²",
-"Ohm's law: V=IR",
-"Resistance: R=ρL/A",
-"Electrical power: P=VI=I²R=V²/R",
-"Magnetic force: F=qvB sinθ",
-"Force on wire: F=BIL sinθ",
-"Magnetic field of long wire: B=μ₀I/(2πr)",
-"Electromagnetic induction: ɛ=-dΦ/dt",
-"Motional emf: ɛ=Blv",
-"AC reactance: Xₗ=ωL, X꜀=1/(ωC)",
-"AC impedance: Z=√(R²+(Xₗ-X꜀)²)",
-"Mirror formula: 1/f=1/v+1/u",
-"Mirror magnification: m=-v/u",
-"Lens formula: 1/f=1/v-1/u",
-"Lens magnification: m=v/u",
-"Power of lens: P=1/f (f in metre)",
-"Snell's law: μ₁ sin i=μ₂ sin r",
-"Critical angle: sin C=1/μ",
-"YDSE fringe width: β=λD/d",
-"Photon energy: E=hν",
-"de Broglie wavelength: λ=h/p",
-"Bohr energy: Eₙ=-13.6/n² eV",
-"Radioactive decay: N=N₀e^(-λt)",
-"Half-life: T½=0.693/λ",
-"Transistor: I_E=I_C+I_B",
-"Current gain: β=I_C/I_B"
-];
-formulaBank.innerHTML=formulaList.map(function(f){return '<div class="formula">'+f+'</div>'}).join("");
 var Q=[["Which law gives force between two point charges?","Coulomb's law",["Ohm's law","Coulomb's law","Faraday's law","Lenz's law"]],["SI unit of electric field?","N/C",["J/C","N/C","C/N","Wb"]],["Ohm's law is:","V=IR",["V=IR","P=VI","Q=CV","F=qvB"]],["Force on charge moving parallel to B is:","Zero",["Maximum","Zero","qB","Infinite"]],["RMS voltage of sinusoidal AC is:","V₀/√2",["V₀","V₀/2","V₀/√2","2V₀"]],["YDSE fringe width is:","β=λD/d",["β=d/λD","β=λD/d","β=λd/D","β=D/λd"]],["Photoelectric emission requires threshold frequency?","Yes",["No","Yes","Only intensity","Only distance"]],["Bohr energy varies as:","-1/n²",["n","1/n","-1/n²","n²"]],["Half-life formula?","0.693/λ",["λ/0.693","0.693/λ","1/λ²","λ²"]],["Transistor relation?","IE=IC+IB",["IE=IC+IB","IE=IC-IB","IC=IE+IB","IB=IC+IE"]]];
 quiz.innerHTML=Q.map(function(q,i){return '<div class="q"><b>'+(i+1)+'. '+q[0]+'</b>'+q[2].map(function(o){return '<label><input type="radio" name="q'+i+'" value="'+o+'"> '+o+'</label>'}).join("")+'</div>'}).join("");function checkQuiz(){var n=0;Q.forEach(function(q,i){var r=document.querySelector('input[name="q'+i+'"]:checked');if(r&&r.value===q[1])n++});score.style.display="block";score.textContent="Score: "+n+"/"+Q.length+(n>=8?" — Great work!":" — Revise and try again.")}
 var quiz=document.getElementById("quiz"), score=document.getElementById("score"), viva=document.getElementById("viva");
-var V=[["What is electric flux?","It measures electric field through a surface."],["SI unit of capacitance?","Farad (F)."],["What is electromagnetic induction?","Induced emf due to change in linked magnetic flux."],["What is critical angle?","The incidence angle in the denser medium for which refraction angle is 90°."],["What is threshold frequency?","Minimum frequency needed for photoelectric emission."]];viva.innerHTML=V.map(function(q,i){return '<div class="v"><b>'+(i+1)+'. '+q[0]+'</b><div class="ans">'+q[1]+'</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display===\'block\'?\'none\':\'block\'">Show / Hide Answer</button></div>'}).join("");
+
 </script></body></html>
