@@ -6,15 +6,15 @@
 </style></head><body>
 <header><div class="nav"><div class="logo">🔬 Physics 12 Lab</div><nav><a href="#chapters">Chapters</a><a href="#sim">Simulations</a><a href="#numericals">Numericals</a><a href="#practice">Practice</a></nav></div></header>
 <section class="hero"><div><div class="badge">CLASS 12 • PHYSICS</div><div class="creator">Created & Designed by <strong>Ayesha Hashmi</strong></div><h1>Understand. <span>Visualize.</span> Solve.</h1><p class="desc">A student-friendly Physics learning lab with chapter guides, important topics, formulas, interactive simulations, numerical solving, MCQs and viva.</p><div class="actions"><a class="btn primary" href="#chapters">Start Learning →</a><a class="btn" href="#numericals">Solve Numerical</a></div></div><div class="art"><div class="axis"></div><div class="ray r1"></div><div class="ray"></div><div class="ray r3"></div><div class="lens"></div></div></section>
-<section class="sec" id="chapters"><h2>📚 Class 12 Physics Chapters</h2><p class="sub">Core chapters organised for concepts, board focus and formulas.</p><div class="grid" id="cards"></div></section>
-<section class="sec"><h2>🧠 Learning Room</h2><p class="sub">Select a chapter.</p><div class="learn"><aside class="side" id="side"></aside><article class="box lesson" id="lesson"></article></div></section>
-<section class="sec" id="sim"><h2>🔬 Interactive Ray Optics</h2><p class="sub">Move the sliders and watch the diagrams update.</p><div class="simgrid">
+<section class="sec" id="chapters"><h2>📚 Class 12 Physics Chapters</h2><p class="sub">Maine chapters ko easy topics, important points aur formulas ke saath arrange kiya hai.</p><div class="grid" id="cards"></div></section>
+<section class="sec"><h2>🧠 Learning Room</h2><p class="sub">Apna chapter chuno — topics, short explanation aur formulas yahin milenge.</p><div class="learn"><aside class="side" id="side"></aside><article class="box lesson" id="lesson"></article></div></section>
+<section class="sec" id="sim"><h2>🔬 Ray Optics ko khud try karke dekho</h2><p class="sub">Slider ko aage-peeche karo aur dekho image kaise badalti hai.</p><div class="simgrid">
 <div class="box sim"><h3>🔍 Convex Lens</h3><div class="control"><input id="ls" type="range" min="11" max="80" value="30"><span class="val" id="luv">30 cm</span></div><canvas id="lc" width="900" height="300"></canvas><div class="stats"><div class="stat"><small>Image distance</small><b id="lv">15 cm</b></div><div class="stat"><small>Magnification</small><b id="lm">-0.50</b></div><div class="stat"><small>Nature</small><b>Real / inverted</b></div></div></div>
 <div class="box sim"><h3>🪞 Concave Mirror</h3><div class="control"><input id="ms" type="range" min="16" max="100" value="45"><span class="val" id="muv">45 cm</span></div><canvas id="mc" width="900" height="300"></canvas><div class="stats"><div class="stat"><small>Image distance</small><b id="mv">22.5 cm</b></div><div class="stat"><small>Magnification</small><b id="mm">-0.50</b></div><div class="stat"><small>Nature</small><b>Real / inverted</b></div></div></div>
 <div class="box sim"><h3>🔺 Prism</h3><div class="control"><input id="ps" type="range" min="10" max="80" value="40"><span class="val" id="piv">40°</span></div><canvas id="pc" width="900" height="300"></canvas><div class="stats"><div class="stat"><small>Incidence</small><b id="pi">40°</b></div><div class="stat"><small>Demo deviation</small><b id="pd">20°</b></div><div class="stat"><small>Observation</small><b>Deviation</b></div></div></div>
 <div class="box sim"><h3>💎 Total Internal Reflection</h3><div class="control"><input id="ts" type="range" min="10" max="80" value="35"><span class="val" id="tiv">35°</span></div><canvas id="tc" width="900" height="300"></canvas><div class="stats"><div class="stat"><small>Critical angle</small><b>≈42°</b></div><div class="stat"><small>Angle</small><b id="tia">35°</b></div><div class="stat"><small>Result</small><b id="tir">Refraction</b></div></div></div></div></section>
 <section class="sec" id="numericals"><h2>🧮 Numerical Solver</h2><p class="sub">Choose a formula, enter values and get calculation steps.</p><div class="box"><div class="fields"><div class="field full"><label>Numerical type</label><select id="stype"></select></div><div class="field"><label id="l1">Value 1</label><input id="i1" type="number" step="any"></div><div class="field"><label id="l2">Value 2</label><input id="i2" type="number" step="any"></div><div class="field" id="g3"><label id="l3">Value 3</label><input id="i3" type="number" step="any"></div></div><button class="solve" onclick="solve()">Solve Numerical</button><div class="solution" id="solution"><b>Step-by-Step Solution</b><div class="steps" id="steps"></div><div class="answer" id="answer"></div></div></div></section>
-<section class="sec"><h2>📐 Formula Bank</h2><p class="sub">Quick revision of important Class 12 Physics formulas.</p><div class="fg" id="formulaBank">
+<section class="sec"><h2>📐 Formula Bank</h2><p class="sub">Class 12 Physics ke zaroori formulas — revise karne ke liye.</p><div class="fg" id="formulaBank">
 <div class="formula">Coulomb: F=(1/4πɛ₀)q₁q₂/r²</div>
 <div class="formula">Electric field: E=(1/4πɛ₀)q/r²</div>
 <div class="formula">Potential: V=(1/4πɛ₀)q/r</div>
@@ -39,7 +39,7 @@
 <div class="formula">Transistor: I_E=I_C+I_B</div>
 </div></section>
 <section class="sec" id="practice">
-<h2>📝 Practice + Viva</h2><p class="sub">Quick MCQs and viva.</p>
+<h2>📝 Practice + Viva</h2><p class="sub">Apni practice check karo aur viva ke questions bhi padho.</p>
 <div class="quiz" id="quiz">
 <div class="q"><b>1. SI unit of electric field?</b><label><input type="radio" name="q0" value="J/C"> J/C</label><label><input type="radio" name="q0" value="N/C"> N/C</label></div>
 <div class="q"><b>2. Ohm's law is:</b><label><input type="radio" name="q1" value="V=IR"> V=IR</label><label><input type="radio" name="q1" value="P=VI"> P=VI</label></div>
@@ -204,13 +204,13 @@ var topicInfo={
 };
 function showCh(i){
  var c=chapters[i],s='<h3>Chapter '+(i+1)+': '+c[0]+'</h3><p>'+c[1]+'</p>';
- s+='<div class="topic"><h4>📚 All Chapter Topics + Short Concepts</h4><p class="sub">Har topic ka quick meaning; full explanation aur examples baad mein aur add kiye ja sakte hain.</p><div class="topic-list">';
+ s+='<div class="topic"><h4>📚 All Chapter Topics + Short Concepts</h4><p class="sub">Kisi topic par tap karo aur uska easy meaning padho. Jahan zarurat ho, apni notebook mein example bhi banao.</p><div class="topic-list">';
  c[2].forEach(function(x,j){s+='<details class="topic-detail" '+(j===0?'open':'')+'><summary>'+x+'</summary><p>'+(topicInfo[x]||'Is topic ki definition, main law/formula, diagram aur one numerical example revise karein.')+'</p></details>'});
- s+='</div></div><div class="topic" style="margin-top:14px"><h4>⭐ Important Topics for Revision</h4><p class="sub">Ye revision priority hai, guaranteed exam questions ki list nahi.</p>';
+ s+='</div></div><div class="topic" style="margin-top:14px"><h4>⭐ Exam ke liye important topics</h4><p class="sub">In topics ko pehle revise kar lena. Paper mein kya aayega, iski guarantee nahi hoti.</p>';
  c[3].forEach(function(x){s+='<div class="imp"><b>'+x+'</b><p>'+(topicInfo[x]||topicInfo[c[2].find(function(t){return t.toLowerCase().includes(x.toLowerCase().split(" ")[0])})]||'Is topic ki definition, standard diagram aur related formula practise karein.')+'</p></div>'});
  s+='</div><h4>📐 Key Formulas</h4><div class="formula-grid">';
  c[4].forEach(function(x){s+='<div class="formula">'+x+'</div>'});
- s+='</div><div class="tip">💡 Study order: concept samjho → diagram banao → formula aur sign convention dekho → numerical solve karo. Important topics ko priority do, lekin baaki topics skip mat samajhna.</div>';
+ s+='</div><div class="tip">💡 Pehle concept samjho, phir diagram banao aur formula dekho. Uske baad numerical khud solve karke dekho. Sirf important topics par depend mat rehna.</div>';
  lesson.innerHTML=s;
  lesson.scrollIntoView({behavior:"smooth",block:"start"});
  Array.from(side.children).forEach(function(b,j){b.classList.toggle("active",j===i)});
