@@ -48,16 +48,10 @@
 <div class="q"><b>5. Half-life is:</b><label><input type="radio" name="q4" value="0.693/λ"> 0.693/λ</label><label><input type="radio" name="q4" value="λ/0.693"> λ/0.693</label></div>
 <div class="q"><b>6. A transistor relation is:</b><label><input type="radio" name="q5" value="IE=IC+IB"> I<sub>E</sub>=I<sub>C</sub>+I<sub>B</sub></label><label><input type="radio" name="q5" value="IE=IC-IB"> I<sub>E</sub>=I<sub>C</sub>-I<sub>B</sub></label></div>
 </div>
-<button class="solve" onclick="checkQuiz()">Check Answers</button>
+<button class="solve" onclick="checkQuiz()">Check Answers</button> <button class="solve" onclick="newQuizSet()">New Question Set</button>
 <div class="score" id="score"></div>
 <h3 style="margin-top:32px">🎤 Viva</h3>
-<div class="viva" id="viva">
-<div class="v"><b>1. What is electric flux?</b><div class="ans">It measures the electric field passing through a surface.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
-<div class="v"><b>2. What is the SI unit of capacitance?</b><div class="ans">Farad (F).</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
-<div class="v"><b>3. What is electromagnetic induction?</b><div class="ans">The production of induced emf due to a change in magnetic flux linked with a circuit.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
-<div class="v"><b>4. What is critical angle?</b><div class="ans">The angle of incidence in the denser medium for which the refracted angle is 90°.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
-<div class="v"><b>5. What is threshold frequency?</b><div class="ans">The minimum frequency needed for photoelectric emission.</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Show / Hide Answer</button></div>
-</div></section>
+<div class="viva" id="viva"></div><button class="solve" onclick="newVivaSet()">Next Viva Questions</button></section>
 <footer>Physics 12 Lab • Class 12 Physics<br><br>Made by <strong>Ayesha Hashmi</strong></footer>
 <script>
 var chapters=[
@@ -238,9 +232,62 @@ types["Induced emf"]=[["Change in flux ΔΦ (Wb)","Time interval Δt (s)"],2,fun
 types["Capacitive reactance"]=[["Frequency f (Hz)","Capacitance C (F)"],2,function(v){var X=1/(2*Math.PI*v[0]*v[1]);return["X꜀=1/(2πfC)\nX꜀=1/(2π×"+v[0]+"×"+v[1]+")\nX꜀="+X,"Capacitive reactance = "+X.toExponential(4)+" Ω"]}];
 types["Inductive reactance"]=[["Frequency f (Hz)","Inductance L (H)"],2,function(v){var X=2*Math.PI*v[0]*v[1];return["Xₗ=2πfL\nXₗ=2π×"+v[0]+"×"+v[1]+"\nXₗ="+X,"Inductive reactance = "+X.toExponential(4)+" Ω"]}];
 var st=document.getElementById("stype");Object.keys(types).forEach(function(k){st.add(new Option(k,k))});function unitOptions(label){if(/Distance|Length|Wavelength|focal length| r \(/i.test(label))return [["m",1],["cm",0.01],["mm",0.001],["nm",1e-9]];if(/charge q|charge Q/i.test(label))return [["C",1],["mC",1e-3],["μC",1e-6],["nC",1e-9]];if(/Area/i.test(label))return [["m²",1],["cm²",1e-4],["mm²",1e-6]];if(/frequency/i.test(label))return [["Hz",1],["kHz",1e3],["MHz",1e6]];if(/time interval/i.test(label))return [["s",1],["ms",1e-3],["μs",1e-6]];if(/capacitance C/i.test(label))return [["F",1],["μF",1e-6],["nF",1e-9],["pF",1e-12]];if(/Energy|work function/i.test(label))return [["J",1],["eV",1.602176634e-19]];return null}function ui(){var t=types[st.value];for(var n=1;n<=3;n++){var g=document.getElementById("g"+n);g.style.display=n<=t[1]?"flex":"none";var input=document.getElementById("i"+n),label=document.getElementById("l"+n),opts=n<=t[1]?unitOptions(t[0][n-1][0]):null;var existing=document.getElementById("unit"+n);if(existing)existing.remove();if(opts){var sel=document.createElement("select");sel.id="unit"+n;sel.setAttribute("aria-label","Input unit");opts.forEach(function(o){sel.add(new Option(o[0],o[1]))});var wrap=document.createElement("div");wrap.className="unit-row";input.parentNode.insertBefore(wrap,input);wrap.appendChild(input);wrap.appendChild(sel);label.textContent=t[0][n-1][0]+" (converted to SI)"}else{if(input.parentNode.className==="unit-row"){var w=input.parentNode;w.parentNode.insertBefore(input,w);w.remove()}label.textContent=t[0][n-1][0]}}}st.addEventListener("change",ui);ui();function solve(){var t=types[st.value],v=[];for(var n=1;n<=t[1];n++){var z=parseFloat(document.getElementById("i"+n).value),u=document.getElementById("unit"+n);if(!Number.isFinite(z)){solution.style.display="block";steps.textContent="Please enter all the values before solving.";answer.textContent="";return}if(u)z*=Number(u.value);v.push(z)}var o=t[2](v);solution.style.display="block";steps.textContent=o[0];answer.textContent=o[1]}
-var Q=[["Which law gives force between two point charges?","Coulomb's law",["Ohm's law","Coulomb's law","Faraday's law","Lenz's law"]],["SI unit of electric field?","N/C",["J/C","N/C","C/N","Wb"]],["Ohm's law is:","V=IR",["V=IR","P=VI","Q=CV","F=qvB"]],["Force on charge moving parallel to B is:","Zero",["Maximum","Zero","qB","Infinite"]],["RMS voltage of sinusoidal AC is:","V₀/√2",["V₀","V₀/2","V₀/√2","2V₀"]],["YDSE fringe width is:","β=λD/d",["β=d/λD","β=λD/d","β=λd/D","β=D/λd"]],["Photoelectric emission requires threshold frequency?","Yes",["No","Yes","Only intensity","Only distance"]],["Bohr energy varies as:","-1/n²",["n","1/n","-1/n²","n²"]],["Half-life formula?","0.693/λ",["λ/0.693","0.693/λ","1/λ²","λ²"]],["Transistor relation?","IE=IC+IB",["IE=IC+IB","IE=IC-IB","IC=IE+IB","IB=IC+IE"]]];
-quiz.innerHTML=Q.map(function(q,i){return '<div class="q"><b>'+(i+1)+'. '+q[0]+'</b>'+q[2].map(function(o){return '<label><input type="radio" name="q'+i+'" value="'+o+'"> '+o+'</label>'}).join("")+'</div>'}).join("");function checkQuiz(){var n=0;Q.forEach(function(q,i){var r=document.querySelector('input[name="q'+i+'"]:checked');if(r&&r.value===q[1])n++});score.style.display="block";score.textContent="Score: "+n+"/"+Q.length+(n>=8?" — Great work!":" — Keep practising and try again.")}
+var QBank=[
+["Which law gives the force between two point charges?","Coulomb's law",["Ohm's law","Coulomb's law","Faraday's law","Lenz's law"]],
+["What is the SI unit of electric field?","N/C",["J/C","N/C","C/N","Wb"]],
+["Ohm's law is written as:","V=IR",["V=IR","P=VI","Q=CV","F=qvB"]],
+["Force on a charge moving parallel to a magnetic field is:","Zero",["Maximum","Zero","qB","Infinite"]],
+["RMS voltage of sinusoidal AC is:","V₀/√2",["V₀","V₀/2","V₀/√2","2V₀"]],
+["YDSE fringe width is:","β=λD/d",["β=d/λD","β=λD/d","β=λd/D","β=D/λd"]],
+["Photoelectric emission requires the incident frequency to reach the:","Threshold frequency",["Maximum frequency","Threshold frequency","Resonant frequency","Zero frequency"]],
+["In Bohr's model, energy varies with quantum number as:","-1/n²",["n","1/n","-1/n²","n²"]],
+["The half-life formula is:","0.693/λ",["λ/0.693","0.693/λ","1/λ²","λ²"]],
+["The transistor current relation is:","IE=IC+IB",["IE=IC+IB","IE=IC-IB","IC=IE+IB","IB=IC+IE"]],
+["The SI unit of capacitance is:","farad (F)",["volt (V)","farad (F)","ohm (Ω)","tesla (T)"]],
+["The SI unit of magnetic flux is:","weber (Wb)",["tesla (T)","weber (Wb)","henry (H)","ampere (A)"]],
+["The SI unit of resistivity is:","Ω m",["Ω","Ω m","S/m","V/m"]],
+["Induced emf depends on the rate of change of:","Magnetic flux",["Resistance","Magnetic flux","Mass","Temperature"]],
+["Lens power is measured in:","dioptre (D)",["metre (m)","dioptre (D)","candela (cd)","newton (N)"]],
+["Refractive index has:","No unit",["metre","second","No unit","dioptre"]],
+["The SI unit of electric charge is:","coulomb (C)",["ampere (A)","coulomb (C)","volt (V)","joule (J)"]],
+["The speed of electromagnetic waves in vacuum is approximately:","3×10⁸ m/s",["3×10⁶ m/s","3×10⁸ m/s","3×10⁵ m/s","3×10¹⁰ m/s"]],
+["Force on a current-carrying wire is maximum when angle is:","90°",["0°","30°","90°","180°"]],
+["Equivalent resistance in series is:","R₁+R₂+…",["R₁+R₂+…","1/R₁+1/R₂","R₁R₂","Zero"]],
+["The unit of frequency is:","hertz (Hz)",["joule (J)","hertz (Hz)","weber (Wb)","farad (F)"]],
+["Work function is the minimum energy needed to:","Remove an electron from a material",["Heat a wire","Remove an electron from a material","Stop all current","Create a nucleus"]],
+["The SI unit of focal length is:","metre (m)",["dioptre (D)","metre (m)","newton (N)","watt (W)"]],
+["The magnetic field around a long straight wire forms:","Concentric circles",["Straight lines","Concentric circles","Squares","No field"]],
+["An ideal diode allows current mainly in:","One direction",["Both directions equally","One direction","No direction","Random directions"]]
+];
+var Q=QBank.slice().sort(function(){return Math.random()-0.5}).slice(0,10);
+function renderQuiz(){quiz.innerHTML=Q.map(function(q,i){return '<div class="q"><b>'+(i+1)+'. '+q[0]+'</b>'+q[2].map(function(o){return '<label><input type="radio" name="q'+i+'" value="'+o.replace(/"/g,'&quot;')+'"> '+o+'</label>'}).join("")+'</div>'}).join("");score.style.display="none";score.textContent=""}renderQuiz();function checkQuiz(){var n=0;Q.forEach(function(q,i){var r=document.querySelector('input[name="q'+i+'"]:checked');if(r&&r.value===q[1])n++});score.style.display="block";score.textContent="Score: "+n+"/"+Q.length+(n>=8?" — Great work!":" — Keep practising and try again.")}
 var quiz=document.getElementById("quiz"), score=document.getElementById("score"), viva=document.getElementById("viva");
+var vivaBank=[
+["What is electric flux?","It measures the electric field passing through a surface."],
+["What is the SI unit of capacitance?","Farad (F)."],
+["What is electromagnetic induction?","The production of induced emf due to a change in magnetic flux linked with a circuit."],
+["What is the critical angle?","The angle of incidence in the denser medium for which the angle of refraction is 90°."],
+["What is threshold frequency?","The minimum frequency needed for photoelectric emission."],
+["State Ohm's law.","At constant temperature, current through a conductor is directly proportional to the potential difference across it."],
+["What is the SI unit of electric charge?","Coulomb (C)."],
+["What is the SI unit of magnetic field?","Tesla (T)."],
+["What is the function of a convex lens?","It converges parallel rays of light to a focus."],
+["What is total internal reflection?","Complete reflection of light back into the denser medium when the angle of incidence exceeds the critical angle."],
+["What is the SI unit of resistance?","Ohm (Ω)."],
+["Define drift velocity.","The average velocity acquired by charge carriers due to an electric field."],
+["What is the principle of a transformer?","Mutual induction."],
+["What is the SI unit of magnetic flux?","Weber (Wb)."],
+["What is the work function?","The minimum energy required to remove an electron from a material's surface."],
+["What is the lens power formula?","P=1/f, where focal length f is measured in metres."],
+["What is the speed of light in vacuum?","Approximately 3×10⁸ m/s."],
+["What is a semiconductor?","A material whose conductivity lies between that of a conductor and an insulator."],
+["What is the function of a rectifier?","It converts alternating current into unidirectional current."],
+["What is half-life?","The time required for half the radioactive nuclei in a sample to decay."]
+];
+function renderViva(){var qs=vivaBank.slice().sort(function(){return Math.random()-0.5}).slice(0,5);viva.innerHTML=qs.map(function(q,i){return '<div class="v"><b>'+(i+1)+'. '+q[0]+'</b><div class="ans">'+q[1]+'</div><button class="show" onclick="var a=this.previousElementSibling;a.style.display=a.style.display===\'block\'?\'none\':\'block\'">Show / Hide Answer</button></div>'}).join("")}
+function newVivaSet(){renderViva()}
+function newQuizSet(){Q=QBank.slice().sort(function(){return Math.random()-0.5}).slice(0,10);renderQuiz()}
+renderViva();
 
 function initStudentNotes(){var sel=document.getElementById("noteChapter"),ti=document.getElementById("noteTitle"),tx=document.getElementById("noteText"),st=document.getElementById("noteStatus"),list=document.getElementById("savedNotes");chapters.forEach(function(ch,i){sel.add(new Option("Chapter "+(i+1)+": "+ch[0],ch[0]))});function read(){try{return JSON.parse(localStorage.getItem("physics12lab_objective_notes")||"[]")}catch(e){return []}}function render(){var a=read();list.innerHTML="";if(!a.length){list.innerHTML='<p class="sub">No notes saved yet. Add your first important line above.</p>';return}a.forEach(function(n,i){var d=document.createElement("div");d.className="note-item";var h=document.createElement("small");h.textContent=n.chapter+" • "+n.title;var p=document.createElement("p");p.textContent=n.text;var b=document.createElement("button");b.textContent="Delete";b.onclick=function(){var z=read();z.splice(i,1);localStorage.setItem("physics12lab_objective_notes",JSON.stringify(z));render()};d.appendChild(h);d.appendChild(p);d.appendChild(b);list.appendChild(d)})}document.getElementById("saveNote").onclick=function(){var h=ti.value.trim(),v=tx.value.trim();if(!h||!v){st.style.display="block";st.textContent="Please enter a topic heading and the important line.";return}var a=read();a.unshift({chapter:sel.value,title:h,text:v});localStorage.setItem("physics12lab_objective_notes",JSON.stringify(a));ti.value="";tx.value="";st.style.display="block";st.textContent="Saved on this device. These notes are not shared with other students.";render()};render()}initStudentNotes();
 </script></body></html>
