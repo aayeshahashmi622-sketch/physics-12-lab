@@ -212,6 +212,7 @@ function showCh(i){
  c[4].forEach(function(x){s+='<div class="formula">'+x+'</div>'});
  s+='</div><div class="tip">💡 Study order: concept samjho → diagram banao → formula aur sign convention dekho → numerical solve karo. Important topics ko priority do, lekin baaki topics skip mat samajhna.</div>';
  lesson.innerHTML=s;
+ lesson.scrollIntoView({behavior:"smooth",block:"start"});
  Array.from(side.children).forEach(function(b,j){b.classList.toggle("active",j===i)});
 }
 chapters.forEach(function(c,i){cards.insertAdjacentHTML("beforeend",'<div class="card"><small>CHAPTER '+(i+1)+'</small><h3>'+c[0]+'</h3><p>'+c[1]+'</p><button onclick="showCh('+i+')">Open Chapter →</button></div>');side.insertAdjacentHTML("beforeend",'<button onclick="showCh('+i+')">Ch '+(i+1)+': '+c[0]+'</button>')});showCh(0);
