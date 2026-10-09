@@ -260,6 +260,7 @@ var QBank=[
 ["An ideal diode allows current mainly in:","One direction",["Both directions equally","One direction","No direction","Random directions"]]
 ];
 var Q=QBank.slice().sort(function(){return Math.random()-0.5}).slice(0,10);
+var quiz=document.getElementById("quiz"), score=document.getElementById("score"), viva=document.getElementById("viva");
 function renderQuiz(){quiz.innerHTML=Q.map(function(q,i){return '<div class="q"><b>'+(i+1)+'. '+q[0]+'</b>'+q[2].map(function(o){return '<label><input type="radio" name="q'+i+'" value="'+o.replace(/"/g,'&quot;')+'"> '+o+'</label>'}).join("")+'</div>'}).join("");score.style.display="none";score.textContent=""}renderQuiz();function checkQuiz(){var n=0;Q.forEach(function(q,i){var r=document.querySelector('input[name="q'+i+'"]:checked');if(r&&r.value===q[1])n++});score.style.display="block";score.textContent="Score: "+n+"/"+Q.length+(n>=8?" — Great work!":" — Keep practising and try again.")}
 var quiz=document.getElementById("quiz"), score=document.getElementById("score"), viva=document.getElementById("viva");
 var vivaBank=[
